@@ -8,16 +8,16 @@ const initState={readstate:false}
 export default function getdataReducer(preState=initState,action){
     const{type,data}=action
     switch(type){
-        case GET1111DATA:
-            return {data1111:data,...preState}
-        case GET11010DATA:
-            return {data11010:data,...preState}
-        case GET11011DATA:
-            return {data11011:data,...preState}
-        case GET11012DATA:
-            return {data11012:data,...preState}
         case READSTATE:
-            return 
+            return {readstate:data}
+        case GET1111DATA:
+            return {...preState,data1111:data}
+        case GET11010DATA:
+            return {...preState,data11010:data}
+        case GET11011DATA:
+            return {...preState,data11011:data}
+        case GET11012DATA:
+            return {...preState,data11012:data}
         default:
             return preState
     }

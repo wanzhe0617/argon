@@ -34,7 +34,7 @@ import {create1111Data,
           if(u.password==loginPassword){
             props.loginname(u.name)
             setft(true)
-            // props.loginname(u.name)
+            props.setreadstate(true)
             Ajax()
           }
           else{
