@@ -14,7 +14,6 @@ import { Link, NavLink, Outlet } from 'react-router-dom'
 function IndexPage(props) {
     const userdata = props.userdata
 
-
     return (
         <div>
             <nav className="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -52,7 +51,6 @@ function IndexPage(props) {
                                 <div className=" dropdown-header noti-title">
                                     <h6 className="text-overflow m-0">Welcome!</h6>
                                 </div>
-
                                 <div className="dropdown-divider"></div>
                                 <a href="#!" className="dropdown-item">
                                     <i className="ni ni-user-run"></i>
@@ -92,9 +90,6 @@ function IndexPage(props) {
                         </form>
                         {/* <!-- Navigation --> */}
                         <ul className="navbar-nav">
-
-
-
                             <li className="nav-item active">
                                 <NavLink to='tc111_1' className="nav-link  active " >
                                     <i className="ni ni-bullet-list-67 text-red"></i> 111年1月
@@ -115,11 +110,8 @@ function IndexPage(props) {
                                     <i className="ni ni-bullet-list-67 text-red"></i> 110年10月
                                 </NavLink>
                             </li>
-
-
                         </ul>
                         {/* <!-- Divider --> */}
-
                     </div>
                 </div>
             </nav>
@@ -129,8 +121,6 @@ function IndexPage(props) {
                     <div className="container-fluid">
                         {/* <!-- Brand --> */}
                         <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="../index.html">Tables</a>
-                        {/* <!-- Form --> */}
-
                         {/* <!-- User --> */}
                         <ul className="navbar-nav align-items-center d-none d-md-flex">
                             <li className="nav-item dropdown">
@@ -218,8 +208,6 @@ export default connect(
         userdata: state.userdata,
         opendatas: state.getdata
     }), {
-    // adduser:adduser,
-    // loginname:loginname,
     add1111Data: create1111Data,
     add11012Data: create11012Data,
     add11011Data: create11011Data,

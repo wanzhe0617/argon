@@ -13,7 +13,6 @@ function Tc111_1(props) {
         </div>
         <div className="table-responsive">
         </div>
-
       </div>
     )
   }
@@ -51,7 +50,6 @@ function Tc111_1(props) {
                   <td>{data.A2受傷}</td>
                   <td>{data.A3}</td>
                 </tr>
-
               </tbody>
             })}
           </table>

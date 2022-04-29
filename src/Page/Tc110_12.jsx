@@ -13,7 +13,6 @@ function Tc110_12(props) {
         </div>
         <div className="table-responsive">
         </div>
-
       </div>
     )
   }

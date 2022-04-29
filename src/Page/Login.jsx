@@ -1,93 +1,90 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Link, NavLink} from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
-import {adduser,loginname} from '../redux/action/uesrs'
-import {create1111Data,
+import { adduser, loginname } from '../redux/action/uesrs'
+import {
+  create1111Data,
   create11010Data,
   create11011Data,
   create11012Data,
-  setreadstate} from '../redux/action/getdata'
+  setreadstate
+} from '../redux/action/getdata'
 
- function Login(props) {
+function Login(props) {
 
-  const [ft,setft]=useState(false);
-  const [ftemail,setftemail]=useState(0)
+  const [ft, setft] = useState(false);
+  const [ftemail, setftemail] = useState(0)
+  const [loginEmail, setloginEmail] = useState('')
+  const [loginPassword, setloginPassword] = useState('')
+  const userdata = props.userdata
 
-  const [loginEmail,setloginEmail]=useState('')
-  const [loginPassword,setloginPassword]=useState('')
-
-  const userdata=props.userdata
-  const opendatas=props.opendatas
-
-  
-
-  function login(){
-    if(loginEmail==0||loginPassword==0){
+  function login() {
+    if (loginEmail == 0 || loginPassword == 0) {
       alert('請全部填寫，不得有空著')
     }
-    else{
-      userdata.map((u)=>{
-        if(u.email==loginEmail){
+    else {
+      userdata.map((u) => {
+        if (u.email == loginEmail) {
           setftemail(1)
-          if(u.password==loginPassword){
+          if (u.password == loginPassword) {
             props.loginname(u.name)
             setft(true)
             props.setreadstate(true)
             Ajax()
           }
-          else{
+          else {
             alert('密碼錯誤')
           }
-        }   
-        else{
+        }
+        else {
           return
-        }  
+        }
       })
     }
-    
+
   }
-  function Ajax(){
+  function Ajax() {
     //111/1
     axios.get('https://datacenter.taichung.gov.tw/swagger/OpenData/6542abee-048d-4389-9034-aed6d7ac44e1').then(
-      Response=>{
-        const data=Response.data
+      Response => {
+        const data = Response.data
         props.add1111Data(data)
-        
+
       },
-      error=>{
-        console.log(error.message)
+      error => {
+        props.setreadstate(false)
       }
     )
     //110/12
     axios.get('https://datacenter.taichung.gov.tw/swagger/OpenData/9aeec405-0ee0-4521-a1ec-c8a875f61039').then(
-      Response=>{
-        const data=Response.data
+      Response => {
+        const data = Response.data
         props.add11012Data(data)
       },
-      error=>{
-        console.log(error.message)
+      error => {
+        props.setreadstate(false)
       }
     )
     //110/11
     axios.get('https://datacenter.taichung.gov.tw/swagger/OpenData/c3c2beea-f716-42bd-8f77-bff2675d4c4b').then(
-      Response=>{
-        const data=Response.data
+      Response => {
+        const data = Response.data
         props.add11011Data(data)
       },
-      error=>{
-        console.log(error.message)
+      error => {
+        props.setreadstate(false)
       }
     )
     //110/10
     axios.get('https://datacenter.taichung.gov.tw/swagger/OpenData/a7c053a7-1f25-4b78-8a7b-28bf90ff9dff').then(
-      Response=>{
-        const data=Response.data
+      Response => {
+        const data = Response.data
         props.add11010Data(data)
       },
-      error=>{
-        console.log(error.message)
+      error => {
+        props.setreadstate(false)
       }
     )
   }
@@ -110,7 +107,7 @@ import {create1111Data,
                 <div className="row">
                   <div className="col-6 collapse-brand">
                     <a href="../index.html">
-                      <img src="../assets/img/brand/blue.png"/>
+                      <img src="../assets/img/brand/blue.png" />
                     </a>
                   </div>
                   <div className="col-6 collapse-close">
@@ -136,7 +133,6 @@ import {create1111Data,
                     <span className="nav-link-inner--text">Login</span>
                   </Link>
                 </li>
-
               </ul>
             </div>
           </div>
@@ -164,7 +160,7 @@ import {create1111Data,
           <div className="row justify-content-center">
             <div className="col-lg-5 col-md-7">
               <div className="card bg-secondary shadow border-0">
-                
+
                 <div className="card-body px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
                     <small>Or sign in with credentials</small>
@@ -175,7 +171,7 @@ import {create1111Data,
                         <div className="input-group-prepend">
                           <span className="input-group-text"><i className="ni ni-email-83"></i></span>
                         </div>
-                        <input className="form-control" placeholder="Email" type="email" onChange={(event)=>{setloginEmail(event.target.value)}}/>
+                        <input className="form-control" placeholder="Email" type="email" onChange={(event) => { setloginEmail(event.target.value) }} />
                       </div>
                     </div>
                     <div className="form-group">
@@ -183,17 +179,17 @@ import {create1111Data,
                         <div className="input-group-prepend">
                           <span className="input-group-text"><i className="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input className="form-control" placeholder="Password" type="password" onChange={(event)=>{setloginPassword(event.target.value)}}/>
+                        <input className="form-control" placeholder="Password" type="password" onChange={(event) => { setloginPassword(event.target.value) }} />
                       </div>
                     </div>
-                  
+
                     <div className="text-center">
                       <button type="button" className="btn btn-primary my-4" onClick={login}>Sign in</button>
                     </div>
                   </form>
                 </div>
               </div>
-            
+
             </div>
           </div>
         </div>
@@ -225,26 +221,28 @@ import {create1111Data,
           </div>
         </footer>
       </div>
-      <div className='loginSuccessful' style={{display: ft?'':'none'}}>
+      <div className='loginSuccessful' style={{ display: ft ? '' : 'none' }}>
         <div>
           <h1>登陸成功</h1>
           <NavLink to='/indexpage'>完成</NavLink>
         </div>
       </div>
-      
+
     </div>
   )
 }
 
 export default connect(
-  state=>({userdata:state.userdata,
-    opendatas:state.getdata}),{
-    adduser:adduser,
-    loginname:loginname,
-    add1111Data:create1111Data,
-    add11012Data:create11012Data,
-    add11011Data:create11011Data,
-    add11010Data:create11010Data,
-    setreadstate:setreadstate
-  }
+  state => ({
+    userdata: state.userdata,
+    opendatas: state.getdata
+  }), {
+  adduser: adduser,
+  loginname: loginname,
+  add1111Data: create1111Data,
+  add11012Data: create11012Data,
+  add11011Data: create11011Data,
+  add11010Data: create11010Data,
+  setreadstate: setreadstate
+}
 )(Login)

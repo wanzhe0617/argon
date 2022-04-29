@@ -6,16 +6,11 @@ import {adduser} from '../redux/action/uesrs'
 function Register(props) {
 
   const userdata=props.userdata
-
   const [registerName,setregisterName]=useState('')
   const [registerEmail,setregisterEmail]=useState('')
   const [registerPassword,setregisterPassword]=useState('')
   const [registerCheckpassword,setregisterCheckpassword]=useState('')
-
   const [ft,setft]=useState(false)
-
-
-
 
   function register(){
     if(registerName==0||registerEmail==0||registerPassword==0||registerCheckpassword==0){
@@ -77,7 +72,6 @@ function Register(props) {
                     <span className="nav-link-inner--text">Login</span>
                   </Link>
                 </li>
-                
               </ul>
             </div>
           </div>
@@ -106,9 +100,7 @@ function Register(props) {
           <div className="row justify-content-center">
             <div className="col-lg-6 col-md-8">
               <div className="card bg-secondary shadow border-0">
-              
                 <div className="card-body px-lg-5 py-lg-5">
-
                   <form role="form">
                     <div className="form-group">
                       <div className="input-group input-group-alternative mb-3">
@@ -141,8 +133,7 @@ function Register(props) {
                         </div>
                         <input className="form-control" placeholder="Check Password" type="password" onChange={(event)=>{setregisterCheckpassword(event.target.value)}}/>
                       </div>
-                    </div>                
-                  
+                    </div>
                     <div className="text-center">
                       <button type="button" className="btn btn-primary mt-4" onClick={register}>Create account</button>
                     </div>
