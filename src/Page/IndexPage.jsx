@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { adduser, loginname } from '../redux/action/uesrs'
@@ -13,6 +13,8 @@ import { Link, NavLink, Outlet } from 'react-router-dom'
 
 function IndexPage(props) {
     const userdata = props.userdata
+    const[show,setshow]=useState(false)
+
 
     return (
         <div>
@@ -124,7 +126,7 @@ function IndexPage(props) {
                         {/* <!-- User --> */}
                         <ul className="navbar-nav align-items-center d-none d-md-flex">
                             <li className="nav-item dropdown">
-                                <a className="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a className="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={()=>{setshow(!show)}}>
                                     <div className="media align-items-center">
                                         <span className="avatar avatar-sm rounded-circle">
                                             <img alt="" src="../assets/img/theme/team-4-800x800.jpg" />
@@ -134,7 +136,7 @@ function IndexPage(props) {
                                         </div>
                                     </div>
                                 </a>
-                                <div className="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                <div className={`dropdown-menu dropdown-menu-arrow dropdown-menu-right ${show? 'show':null}`}>
                                     <div className=" dropdown-header noti-title">
                                         <h6 className="text-overflow m-0">Welcome!</h6>
                                     </div>
